@@ -1,4 +1,4 @@
-# Angular Color Picker
+# Angular Color Picker Fork
 
 <a href="https://badge.fury.io/js/ngx-color-picker"><img src="https://badge.fury.io/js/ngx-color-picker.svg" align="right" alt="npm version" height="18"></a>
 
