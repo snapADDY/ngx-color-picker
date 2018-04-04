@@ -43,8 +43,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
   public show: boolean;
   public hidden: boolean;
 
-  public top: number;
+  public top: any;
   public left: number;
+  public bottom: number;
   public position: string;
 
   public format: number;
@@ -636,7 +637,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
         node = node.parentNode;
       }
 
-      const boxDirective = this.createBox(this.directiveElementRef.nativeElement, (position !== 'fixed'));
+      const boxDirective = this.createBox(this.directiveElementRef.nativeElement, true);
 
       if (this.useRootViewContainer || (position === 'fixed' && !parentNode)) {
         this.top = boxDirective.top;
@@ -646,7 +647,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
           parentNode = node;
         }
 
-        const boxParent = this.createBox(parentNode, (position !== 'fixed'));
+        const boxParent = this.createBox(parentNode, true);
 
         this.top = boxDirective.top - boxParent.top;
         this.left = boxDirective.left - boxParent.left;
@@ -659,6 +660,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.cpPosition === 'left') {
         this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset;
         this.left -= this.cpWidth + this.dialogArrowSize - 2;
+      } else if (this.position === 'absolute-top') {
+        this.top = 'inherit';
+        this.left = 15;
+        this.bottom = 60;
+        this.position = 'absolute';
       } else if (this.cpPosition === 'top') {
         this.arrowTop = dialogHeight - 1;
 
