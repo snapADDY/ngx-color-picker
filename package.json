@@ -14,7 +14,7 @@
     "extends": "./stylelint.json"
   },
   "scripts": {
-    "clean": "rm -rf dist bundles",
+    "clean": "rimraf dist bundles",
     "start": "npm run build && npm run bundle",
     "watch": "watch --wait=5 'npm run start' src/",
     "lint": "npm run lint:ts && npm run lint:scss",
@@ -47,6 +47,7 @@
     "core-js": "^2.5.0",
     "cpx": "^1.5.0",
     "node-sass": "^4.8.0",
+    "rimraf": "2.6.2",
     "rollup": "^0.57.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-sourcemaps": "^0.4.0",
